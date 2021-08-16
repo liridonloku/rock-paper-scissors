@@ -3,6 +3,7 @@
     <title>Rock Paper Scissors</title>
     <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="header">
@@ -15,23 +16,43 @@
             <p>Pick your weapon!</p>
         </div>
         <div class="buttons">
-            <div class="button"><button><img src="images/rock400.png"></button></div>
-            <div class="button"><button><img src="images/paper400.png"></button></div>
-            <div class="button"><button><img src="images/scissors400.png"></button></div>
+            <div class="button">
+                <button id="rock">
+                    <img id="rock" src="images/rock400.png">
+                </button>
+            </div>
+            <div class="button">
+                <button id="paper">
+                    <img id="paper" src="images/paper400.png">
+                </button>
+            </div>
+            <div class="button">
+                <button id="scissors">
+                    <img id="scissors" src="images/scissors400.png">
+                </button>
+            </div>
         </div>
         <div class="message">
-            <p>message</p>
+            <p id="choices">Waiting for your choice.</p>
+            <p id="message">Good luck!</p>
         </div> 
         <div class="score">
-            <p>score</p>
+            <span>Player</span>
+            <span id="score">0 : 0</span>
+            <span>Computer</span>
+        </div>
+    </div>
+    <div id="overlay" onclick="newGame()">
+        <div id="overlay-text">
+            <p id="end-result"></p>
         </div>
     </div>
     <div class="footer">
             <p>
-                <a href="">The Odin Project</a>
+                <a href="https://theodinproject.com">The Odin Project</a>
             </p>
             <p>
-                <a href=""> GitHub</a>
+               <a href="https://github.com/liridonloku"> GitHub</a>
             </p>
             <p>August 2021</p>
     </div>

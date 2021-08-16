@@ -20,63 +20,79 @@ function computerPlay(){
 
 //Compares player and computer choices and returns the corresponding message
 function playRound(playerSelection, computerSelection) {
+    let textResult ='';
     if(playerSelection === 'rock') {
         if(computerSelection === 'scissors'){
             playerScore ++;
-            console.log('You win! Rock beats Scissors.');
+            textResult = 'You win! Rock beats Scissors.';
         }
         else if(computerSelection === 'paper'){
             computerScore ++
-            console.log('You lose! Paper beats Rock.');
+            textResult = 'You lose! Paper beats Rock.';
         }
         else{
-            console.log('Tie!');
+            textResult = 'Tie.';
         }
     }
     else if(playerSelection === 'scissors'){
         if(computerSelection === 'paper'){
             playerScore ++;
-            console.log('You win! Scissors beat Paper.');
+            textResult = 'You win! Scissors beat Paper.';
         }
         else if(computerSelection === 'rock'){
             computerScore ++;
-            console.log('You lose! Rock beats Scissors.');
+            textResult = 'You lose! Rock beats Scissors.';
         }
         else{
-            console.log('Tie.');
+            textResult = 'Tie.';
         }
     }
     else if(playerSelection === 'paper'){
         if(computerSelection === 'rock'){
             playerScore ++;
-            console.log('You win! Paper beats Rock.');
+            textResult = 'You win! Paper beats Rock.';
         }
         else if(computerSelection === 'scissors'){
             computerScore ++;
-            console.log('You lose! Scissors beat Paper.');
+            textResult = 'You lose! Scissors beat Paper.';
         }
         else{
-            console.log('Tie.');
+            textResult = 'Tie.';
         }
     }
     else {
-        console.log('Invalid input. Please input Rock, Paper or Scissors.');
+        textResult = 'Invalid input. Please input Rock, Paper or Scissors.';
+    }
+    document.getElementById('choices').textContent = `${playerSelection} vs ${computerSelection}`;
+    document.getElementById('message').textContent = textResult;
+    document.getElementById('score').textContent = `${playerScore} : ${computerScore}`;
+    if(playerScore >= 5) {
+        overlayOn();
+        document.getElementById('end-result').textContent = "You won! Click anywhere to start a new game."
+    }
+    if(computerScore >= 5) {
+        overlayOn();
+        document.getElementById('end-result').textContent = "You lost! Click anywhere to start a new game."
     }
 }
 
 
-function game(){
-    let firstToFive = 0;
-    while (firstToFive < 5){
-        let playerPlay = prompt("Choose your weapon: Rock, Paper or Scissors").toLowerCase();
-        playRound (playerPlay,computerPlay());
-        console.log('Player: '+playerScore +', Computer: '+ computerScore);
-        firstToFive = Math.max(playerScore,computerScore);
-    }
-    if(playerScore === 5){
-        console.log('Congratulations! You won the game.');
-    }
-    else {
-        console.log('You lost! Better luck next time.');
-    }
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    button.addEventListener('click', (e) =>{
+        playRound(e.target.id,computerPlay());
+    });
+});
+
+function overlayOn() {
+    document.getElementById('overlay').style.display = "block";
+}
+
+function newGame(){
+    document.getElementById('overlay').style.display = "none";
+    playerScore = 0;
+    computerScore = 0;
+    document.getElementById('choices').textContent = `Waiting for your choice`;
+    document.getElementById('message').textContent = 'Good luck!';
+    document.getElementById('score').textContent = `0 : 0`;
 }
