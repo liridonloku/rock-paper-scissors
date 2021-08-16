@@ -1,0 +1,29 @@
+/*Orange:  #F2AA4CFF  */
+/*Black :  #101820FF  */
+
+body{
+    margin: 0;
+}
+
+.header {
+    height: 80px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    text-align: center;
+    height: auto;
+}
+
+.footer {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
